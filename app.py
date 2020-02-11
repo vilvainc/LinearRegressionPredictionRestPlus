@@ -1,6 +1,4 @@
 
-import numpy as np
-
 from flask import Flask, request, jsonify
 from flask_restplus import Api, Resource, fields
 
@@ -29,6 +27,7 @@ ns_model = api.model('predict',
 
 # Load the model and predict
 def prediction_helper(model_path, data):
+    import numpy as np
     # in reality, the dataset for prediction must go thro the same feature engineering pipeline as training dataset
     value = [[np.array(data)]]
     prediction = import_model_predict(model_path, value)

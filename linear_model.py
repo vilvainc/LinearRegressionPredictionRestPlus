@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 import pickle
 
@@ -56,8 +57,12 @@ def execute_pipeline():
     export_model(model, model_path)
 
     # step 6
-    import_model_predict(model_path, value=[[6.8]], debug=True)
+    # dataset for prediction must go thro the same feature engineering pipeline as training dataset
+    data = 5.3
+    value = [[np.array(data)]]
+    import_model_predict(model_path, value=value, debug=True)
 
 # run the code
-execute_pipeline()
+if __name__ == '__main__':
+    execute_pipeline()
 
